@@ -2,9 +2,9 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react"
 
-export const AddCategory = ({setCategories}) => {
+export const AddCategory = (/*{setCategories}*/ {onNewCategory}) => {
     // eslint-disable-next-line react/prop-types
-    const [inputValue, setInputValue] = useState('One Punch');
+    const [inputValue, setInputValue] = useState('');
 
     const onInputChange = (event) => {
         setInputValue(event.target.value);
@@ -13,15 +13,15 @@ export const AddCategory = ({setCategories}) => {
     const onSubmit = (event) => {
         event.preventDefault();
 
-        console.log(inputValue.trim().length);
         // evitar que un input vacio se agregue al arreglo
         if(inputValue.trim().length < 1) {
             return;
         }
 
+        onNewCategory(inputValue);
         // Setear los valores de las categorias desde el componente hijo al componente padre
         // props.setCategories([inputValue, ...props.categories]);
-        setCategories(cat => [inputValue, ...cat]);
+        // setCategories(cat => [inputValue, ...cat]);
 
         setInputValue('');
         
