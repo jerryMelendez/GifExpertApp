@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useState } from "react"
+import { useState } from "react";
+import PropTypes from 'prop-types';
 
 export const AddCategory = (/*{setCategories}*/ {onNewCategory}) => {
     // eslint-disable-next-line react/prop-types
@@ -11,6 +12,8 @@ export const AddCategory = (/*{setCategories}*/ {onNewCategory}) => {
     }
 
     const onSubmit = (event) => {
+
+        // evitar que se recargue la pagina
         event.preventDefault();
 
         // evitar que un input vacio se agregue al arreglo
@@ -38,3 +41,5 @@ export const AddCategory = (/*{setCategories}*/ {onNewCategory}) => {
         
     )
 }
+
+AddCategory.propTypes = { onNewCategory: PropTypes.func.isRequired };
